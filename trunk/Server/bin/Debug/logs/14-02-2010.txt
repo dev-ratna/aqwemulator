@@ -1,0 +1,44 @@
+ERROR!
+Time: 16:48
+Assembly: Database
+Method: openConnection
+Description: System.Data.Odbc.OdbcException (0x80131937): ERROR [HY000] [MySQL][ODBC 5.1 Driver]Unknown database 'aqwdb'
+ERROR [HY000] [MySQL][ODBC 5.1 Driver]Unknown database 'aqwdb'
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcConnectionHandle..ctor(OdbcConnection connection, OdbcConnectionString constr, OdbcEnvironmentHandle environmentHandle)
+   at System.Data.Odbc.OdbcConnectionOpen..ctor(OdbcConnection outerConnection, OdbcConnectionString connectionOptions)
+   at System.Data.Odbc.OdbcConnectionFactory.CreateConnection(DbConnectionOptions options, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup)
+   at System.Data.ProviderBase.DbConnectionFactory.GetConnection(DbConnection owningConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at AQWE.Data.Database.openConnection(String _host, String _user, String _pass, String _db, Int32 _port) in C:\Users\Admin\Documents\AQW Emulator - NFC build 1.0.0\Data\Database.cs:line 32
+
+ERROR!
+Time: 16:50
+Assembly: Database
+Method: runReadInteger
+Description: ERROR [42S02] [MySQL][ODBC 5.1 Driver][mysqld-5.1.37]Table 'aqw_db.system_config' doesn't exist, query = SELECT cvalue FROM system_config WHERE ckey = 'server.port'
+
+ERROR!
+Time: 16:50
+Assembly: Database
+Method: runReadInteger
+Description: ERROR [42S02] [MySQL][ODBC 5.1 Driver][mysqld-5.1.37]Table 'aqw_db.system_config' doesn't exist, query = SELECT cvalue FROM system_config WHERE ckey = 'server.max.connections'
+
+ERROR!
+Time: 16:50
+Assembly: Database
+Method: runReadInteger
+Description: ERROR [42S02] [MySQL][ODBC 5.1 Driver][mysqld-5.1.37]Table 'aqw_db.system_config' doesn't exist, query = SELECT cvalue FROM system_config WHERE ckey = 'server.back.log'
+
+ERROR!
+Time: 17:04
+Assembly: RuntimeMethodHandle
+Method: InvokeMethodFast
+Description: ERROR [42S22] [MySQL][ODBC 5.1 Driver][mysqld-5.1.37]Unknown column 'username' in 'field list', query = SELECT id,username,rank,password,salt FROM users WHERE username = 'demo'
+
+Warning!
+Time: 17:04
+Description: Disconnected user because of no data.
+

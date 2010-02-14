@@ -1,0 +1,7 @@
+﻿Build 1.0.0:
+- Made a new clean project based on EpicEmulator's core.
+- Updated Net.packetHandler to support AQW's packet structure.
+- Updated the database structure (aqwdb.sql)
+
+Build 1.0.1:
+- Updated the database structure.
