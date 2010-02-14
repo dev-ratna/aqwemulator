@@ -1,0 +1,18 @@
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\bin\Debug\EpicEmulator.exe
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\bin\Debug\EpicEmulator.pdb
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\obj\x86\Debug\EpicEmulator.frmMain.resources
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\obj\x86\Debug\EpicEmulator.Properties.Resources.resources
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\obj\x86\Debug\EpicEmulator.exe
+c:\users\admin\documents\visual studio 2010\Projects\EpicEmulator\EpicEmulator\obj\x86\Debug\EpicEmulator.pdb
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\bin\Debug\EpicEmulator.exe
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\bin\Debug\EpicEmulator.pdb
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\obj\x86\Debug\EpicEmulator.frmMain.resources
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\obj\x86\Debug\EpicEmulator.Properties.Resources.resources
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\obj\x86\Debug\EpicEmulator.exe
+C:\Users\Admin\Documents\Visual Studio 2010\Projects\EpicEmulator\EpicEmulator - Build 1.0.0\EpicEmulator\obj\x86\Debug\EpicEmulator.pdb
