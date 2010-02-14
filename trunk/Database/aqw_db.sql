@@ -46,7 +46,7 @@ CREATE TABLE `system_config` (
 
 /*Data for the table `system_config` */
 
-insert  into `system_config`(`ckey`,`cvalue`) values ('server.port','5588'),('server.max.connections','500'),('server.back.log','10');
+insert  into `system_config`(`ckey`,`cvalue`) values ('server.port','5588'),('server.max.connections','500'),('server.back.log','10'),('server.news','news/News-05Feb10.swf'),('server.map','news/Map-Jan1510.swf'),('server.book','news/Book-5Feb10.swf'),('server.motd','Private server concept and design by Syntax & Divien.'),('server.name','localhost');
 
 /*Table structure for table `users` */
 

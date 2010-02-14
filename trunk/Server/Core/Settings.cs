@@ -52,7 +52,13 @@ namespace AQWE.Core
         public static int server_back_log = 10;
         #endregion
 
+        #region Server Configuration
         public static string server_name = "localhost";
+        public static string server_motd = "Private server concept and design by Syntax & Divien.";
+        public static string server_news = "news/News-05Feb10.swf";
+        public static string server_map = "news/Map-Jan1510.swf";
+        public static string server_book = "news/Book-5Feb10.swf";
+        #endregion
         #endregion
 
         #region Methods
@@ -67,6 +73,12 @@ namespace AQWE.Core
             server_port = getIntEntry("server.port");
             server_max_connections = getIntEntry("server.max.connections");
             server_back_log = getIntEntry("server.back.log");
+
+            // INIT SERVER SETTINGS
+            server_name = getStringEntry("server.name");
+            server_motd = getStringEntry("server.motd");
+            server_map = getStringEntry("server.map");
+            server_book = getStringEntry("server.book");
 
             Logging.logHolyInfo("Settings initialized.");
         }
