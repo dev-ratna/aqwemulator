@@ -42,7 +42,7 @@ namespace AQWE.Sessions
 
         public static void attemptLogin(string Username, string Password, packetHandler pH)
         {
-            string[] Data = Database.runReadRowStrings("SELECT id,username,rank,password,salt FROM users WHERE username = '" + Username + "'");
+            string[] Data = Database.runReadRowStrings("SELECT id,name,access,password,salt FROM users WHERE name = '" + Username + "'");
             if (Data.Length > 0)
             {
                 Info userInfo = new Info();
