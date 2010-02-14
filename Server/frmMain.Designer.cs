@@ -342,7 +342,7 @@ namespace AQWE
             this.Menu = this.mnuMain;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AQW Emulator [HARDCORE] - Build 1.0.1";
+            this.Text = "AQW Emulator [HARDCORE] - Build 1.0.2";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusMain.ResumeLayout(false);
             this.statusMain.PerformLayout();
