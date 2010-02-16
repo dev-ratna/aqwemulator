@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
 
 using AQWE.Core;
 using AQWE.Sessions;
@@ -109,9 +110,8 @@ namespace AQWE.Net
                 {
                     this.Socket.BeginReceive(this.dataBuffer, 0, this.dataBuffer.Length, SocketFlags.None, new AsyncCallback(this.dataArrival), null);
                 }
-                catch (SocketException sEx)
+                catch
                 {
-                    //Logging.logError(sEx.Message);
                     socketManager.endConnection(this);
                 }
             }
