@@ -1,0 +1,6 @@
+ERROR!
+Time: 17:53
+Assembly: RuntimeMethodHandle
+Method: InvokeMethodFast
+Description: An established connection was aborted by the software in your host machine
+
