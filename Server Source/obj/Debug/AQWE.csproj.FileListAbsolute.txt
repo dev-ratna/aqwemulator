@@ -6,3 +6,11 @@ C:\Users\Admin\AppData\Local\Temporary Projects\AQWE\obj\Debug\AQWE.Properties.R
 C:\Users\Admin\AppData\Local\Temporary Projects\AQWE\obj\Debug\AQWE.csproj.GenerateResource.Cache
 C:\Users\Admin\AppData\Local\Temporary Projects\AQWE\obj\Debug\AQWE.exe
 C:\Users\Admin\AppData\Local\Temporary Projects\AQWE\obj\Debug\AQWE.pdb
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.exe
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.pdb
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\bin\Debug\AQWE.exe
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\bin\Debug\AQWE.pdb
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.frmMain.resources
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.Properties.Resources.resources
+C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.csproj.GenerateResource.Cache
