@@ -1,0 +1,15 @@
+﻿Build 1.0.0:
+- Made a new clean project based on EpicEmulator's core.
+- Updated Net.packetHandler to support AQW's packet structure.
+- Updated the database structure (aqwdb.sql)
+
+Build 1.0.1:
+- Updated the database structure.
+
+Build 1.0.2:
+- Fixed login response error.
+- Fixed the packet proccessor.
+
+Build 1.0.3:
+- Rebuiled the Core with Microsoft Visual C# 2008 since Visual Studio 2010 Beta version
+  is too bugged at the moment.
