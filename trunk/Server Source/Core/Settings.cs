@@ -55,9 +55,20 @@ namespace AQWE.Core
         #region Server Configuration
         public static string server_name = "localhost";
         public static string server_motd = "Private server concept and design by Syntax & Divien.";
-        public static string server_news = "news/News-05Feb10.swf";
-        public static string server_map = "news/Map-Jan1510.swf";
-        public static string server_book = "news/Book-5Feb10.swf";
+        #endregion
+
+        #region Client Configuration
+        public static string client_news = "news/News-05Feb10.swf";
+        public static string client_map = "news/Map-Jan1510.swf";
+        public static string client_book = "news/Book-5Feb10.swf";
+        /// <summary>
+        /// The maximum limit of users allowed in a room.
+        /// </summary>
+        public static int room_user_limit = 10;
+        /// <summary>
+        /// The id of map that user loads when user joins first time.
+        /// </summary>
+        public static int map_first_join = 1;
         #endregion
         #endregion
 
@@ -77,8 +88,13 @@ namespace AQWE.Core
             // INIT SERVER SETTINGS
             server_name = getStringEntry("server.name");
             server_motd = getStringEntry("server.motd");
-            server_map = getStringEntry("server.map");
-            server_book = getStringEntry("server.book");
+
+            // INIT CLIENT SETTINGS
+            client_news = getStringEntry("client.news");
+            client_map = getStringEntry("client.map");
+            client_book = getStringEntry("client.book");
+            room_user_limit = getIntEntry("room.user.limit");
+            map_first_join = getIntEntry("map.first.join");
 
             Logging.logHolyInfo("Settings initialized.");
         }

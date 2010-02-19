@@ -16,6 +16,21 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`aqw_db` /*!40100 DEFAULT CHARACTER SET 
 
 USE `aqw_db`;
 
+/*Table structure for table `maps` */
+
+DROP TABLE IF EXISTS `maps`;
+
+CREATE TABLE `maps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `maps` */
+
+insert  into `maps`(`id`,`name`,`file_name`) values (1,'battleon','Battleon/town-Battleon-12Feb10.swf');
+
 /*Table structure for table `servers` */
 
 DROP TABLE IF EXISTS `servers`;
@@ -33,7 +48,7 @@ CREATE TABLE `servers` (
 
 /*Data for the table `servers` */
 
-insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','127.0.0.1',0,500,0,1);
+insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','127.0.0.1',0,500,1,1);
 
 /*Table structure for table `system_config` */
 
@@ -46,7 +61,7 @@ CREATE TABLE `system_config` (
 
 /*Data for the table `system_config` */
 
-insert  into `system_config`(`ckey`,`cvalue`) values ('server.port','5588'),('server.max.connections','500'),('server.back.log','10'),('server.news','news/News-05Feb10.swf'),('server.map','news/Map-Jan1510.swf'),('server.book','news/Book-5Feb10.swf'),('server.motd','Private server concept and design by Syntax & Divien.'),('server.name','localhost');
+insert  into `system_config`(`ckey`,`cvalue`) values ('server.port','5588'),('server.max.connections','500'),('server.back.log','10'),('client.news','news/News-05Feb10.swf'),('client.map','news/Map-Jan1510.swf'),('client.book','news/Book-5Feb10.swf'),('server.motd','Private server concept and design by Syntax & Divien.'),('server.name','localhost'),('room.user.limit','10'),('map.first.join','1');
 
 /*Table structure for table `users` */
 

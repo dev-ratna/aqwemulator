@@ -53,17 +53,21 @@
     <Compile Include="Core\Settings.cs" />
     <Compile Include="Data\Database.cs" />
     <Compile Include="Data\Filesystem.cs" />
+    <Compile Include="Data\Preloader.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Managers\mapManager.cs" />
+    <Compile Include="Game\Managers\roomManager.cs" />
+    <Compile Include="Game\Map.cs" />
     <Compile Include="Game\Rooms\Room.cs" />
-    <Compile Include="Game\Users\Info.cs" />
-    <Compile Include="Net\connectionManager.cs" />
-    <Compile Include="Net\packetHandler.cs" />
-    <Compile Include="Net\socketManager.cs" />
+    <Compile Include="Game\Users\User.cs" />
+    <Compile Include="Game\Managers\userManager.cs" />
+    <Compile Include="Net\Packets.cs" />
+    <Compile Include="Net\Sockets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
