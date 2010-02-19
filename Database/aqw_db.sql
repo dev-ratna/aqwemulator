@@ -48,7 +48,7 @@ CREATE TABLE `servers` (
 
 /*Data for the table `servers` */
 
-insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','127.0.0.1',0,500,1,1);
+insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','127.0.0.1',1,500,1,1);
 
 /*Table structure for table `system_config` */
 
@@ -73,6 +73,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `salt` varchar(255) DEFAULT NULL,
+  `level` int(11) DEFAULT '1',
   `age` int(11) DEFAULT '15',
   `access` int(11) DEFAULT '0',
   `upg_days` int(11) DEFAULT '9999',
@@ -84,7 +85,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`password`,`email`,`salt`,`age`,`access`,`upg_days`,`send_email`,`cc_only`,`upg_expire_date`) values (1,'demo','e91199d07f6c26b7cceaa20cf627b7768806e32f','demo@demo.com','demo',15,1,9999,0,0,'01-01-3000T00:00:00');
+insert  into `users`(`id`,`name`,`password`,`email`,`salt`,`level`,`age`,`access`,`upg_days`,`send_email`,`cc_only`,`upg_expire_date`) values (1,'demo','e91199d07f6c26b7cceaa20cf627b7768806e32f','demo@demo.com','demo',1,15,1,9999,0,0,'01-01-3000T00:00:00');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
