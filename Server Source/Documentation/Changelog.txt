@@ -13,3 +13,14 @@ Build 1.0.2:
 Build 1.0.3:
 - Rebuiled the Core with Microsoft Visual C# 2008 since Visual Studio 2010 Beta version
   is too bugged at the moment.
+- Fixed join packets.
+- Done with rooms.
+- Started on room manager.
+- Started on the preloader.
+- Maps are now preloaded.
+- Added a map manager.
+
+Build 1.0.4:
+- Done with room manager.
+- Done with Join.
+- Done with user left.

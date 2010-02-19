@@ -44,7 +44,7 @@ namespace AQWE
         private void writeInfo()
         {
             Logging.logHolyInfo("HardCore Emulator");
-            Logging.logHolyInfo("Build: 1.0.3");
+            Logging.logHolyInfo("Build: 1.0.4");
             Logging.logHolyInfo("- AdventureQuest Worlds Emulator.");
             this.writeBlank();
             Logging.logHolyInfo("Developed by Syntax & Divien.");
@@ -95,7 +95,11 @@ namespace AQWE
             Database.runQuery("UPDATE servers SET max = '" + Settings.server_max_connections + "' WHERE name = '" + Settings.server_name + "'");
             Application.DoEvents();
 
-            if (!socketManager.Listen(Settings.server_port, Settings.server_max_connections, Settings.server_back_log))
+            Preloader.Init();
+            this.writeBlank();
+            Application.DoEvents();
+
+            if (!Sockets.Listen(Settings.server_port, Settings.server_max_connections, Settings.server_back_log))
             {
                 this.Shutdown();
                 return;
@@ -112,15 +116,27 @@ namespace AQWE
         public void updateOnlineUsers(int value)
         {
             this.statusOnlineUsers.Text = value.ToString();
-            Database.runQuery("UPDATE servers SET count = '" + value + "' WHERE name = '" + Settings.server_name + "'");
+            Database.runQuery("UPDATE servers SET count = " + value + " WHERE name = '" + Settings.server_name + "'");
         }
 
         private void Shutdown()
         {
             Logging.logHolyInfo("Shutting down...");
+            Database.runQuery("UPDATE servers SET count = 0 WHERE name = '" + Settings.server_name + "'");
+            Database.runQuery("UPDATE servers SET online = 0 WHERE name = '" + Settings.server_name + "'");
             Database.closeConnection();
             Logging.logHolyInfo("Shutdown complete.");
             Logging.logHolyInfo("Application will terminate in 3 seconds...");
+            Application.DoEvents();
+            Thread.Sleep(3000);
+            Environment.Exit(2);
+        }
+
+        private void Shutdown(object noText)
+        {
+            Database.runQuery("UPDATE servers SET count = 0 WHERE name = '" + Settings.server_name + "'");
+            Database.runQuery("UPDATE servers SET online = 0 WHERE name = '" + Settings.server_name + "'");
+            Database.closeConnection();
             Application.DoEvents();
             Thread.Sleep(3000);
             Environment.Exit(2);
@@ -131,7 +147,9 @@ namespace AQWE
             if (Server)
             {
                 Logging.logHolyInfo("Shutting down server...");
-                socketManager.stopConnection();
+                Database.runQuery("UPDATE servers SET count = 0 WHERE name = '" + Settings.server_name + "'");
+                Database.runQuery("UPDATE servers SET online = 0 WHERE name = '" + Settings.server_name + "'");
+                Sockets.stopConnection();
                 Logging.logHolyInfo("Server shutdown complete.");
                 Application.DoEvents();
             }

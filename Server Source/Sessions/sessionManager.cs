@@ -37,30 +37,31 @@ namespace AQWE.Sessions
         #region Methods
         public static bool userExists(string Username)
         {
-            return Database.checkExists("users", "username", Username);
+            return Database.checkExists("users", "name", Username);
         }
 
-        public static void attemptLogin(string Username, string Password, packetHandler pH)
+        public static void attemptLogin(string Username, string Password, Packets pH)
         {
-            string[] Data = Database.runReadRowStrings("SELECT id,name,access,password,salt FROM users WHERE name = '" + Username + "'");
+            string[] Data = Database.runReadRowStrings("SELECT id,name,access,level,password,salt FROM users WHERE name = '" + Username + "'");
             if (Data.Length > 0)
             {
-                Info userInfo = new Info();
+                User userInfo = new User();
                 userInfo.userID = int.Parse(Data[0]);
                 userInfo.Username = Data[1];
-                userInfo.Rank = int.Parse(Data[2]);
+                userInfo.Access = int.Parse(Data[2]);
+                userInfo.Level = int.Parse(Data[3]);
                 userInfo.connectionID = pH.Connection.connectionID;
 
                 userSession Session = new userSession(pH.Connection, userInfo);
                 pH.Connection.Session = Session;
                 _Sessions.Add(userInfo.userID, Session);
 
-                pH.Connection.sendMessage("%xt%loginResponse%-1%true%" + userInfo.userID + "%" + userInfo.Username + "%" + Settings.server_motd + "%1262809466137%sNews=" + Settings.server_news + ",sMap=" + Settings.server_map + ",sBook=" + Settings.server_book + "%");
+                pH.Connection.sendMessage("%xt%loginResponse%-1%true%" + userInfo.userID + "%" + userInfo.Username + "%" + Settings.server_motd + "%1262809466137%sNews=" + Settings.client_news + ",sMap=" + Settings.client_map + ",sBook=" + Settings.client_book + "%");
             }
             else
             {
                 Logging.logWarning("Disconnected user because of no data.");
-                socketManager.endConnection(pH.Connection);
+                Sockets.endConnection(pH.Connection, pH.Connection.Session.userInfo.roomID);
             }
         }
         #endregion

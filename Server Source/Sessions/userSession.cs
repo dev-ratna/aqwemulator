@@ -5,6 +5,7 @@ using System.Text;
 
 using AQWE.Net;
 using AQWE.Game.Users;
+using AQWE.Game.Managers;
 
 namespace AQWE.Sessions
 {
@@ -17,15 +18,15 @@ namespace AQWE.Sessions
         /// <summary>
         /// The userInfo object of this user.
         /// </summary>
-        internal Info userInfo;
+        internal User userInfo;
         /// <summary>
         /// The connectionManager object of this session.
         /// </summary>
-        private connectionManager Connection;
+        private userManager Connection;
         #endregion
 
         #region Contructors
-        public userSession(connectionManager Connection, Info userInfo)
+        public userSession(userManager Connection, User userInfo)
         {
             this.Connection = Connection;
             this.userInfo = userInfo;
