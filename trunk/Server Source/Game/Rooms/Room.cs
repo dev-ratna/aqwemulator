@@ -25,6 +25,27 @@ namespace AQWE.Game.Rooms
             roomManager.Add(this.mapID, this);
         }
 
+        public userManager getUserIntsance(int userID)
+        {
+            if (activeUsers.ContainsKey(userID))
+                return (userManager)activeUsers[userID];
+            else
+                throw new Exception("User ID: " + userID + " doesn't exist");
+        }
+
+        public userManager getPlayerIntsance(int _playerID)
+        {
+            foreach (KeyValuePair<int, userManager> KVP in activeUsers)
+            {
+                if (KVP.Value.Session.userInfo.playerID == _playerID)
+                {
+                    return (userManager)KVP.Value;
+                }
+            }
+
+            throw new Exception("No player data found.");
+        }
+
         public void AddUser(int userID, userManager User)
         {
             if (!activeUsers.ContainsKey(userID))
