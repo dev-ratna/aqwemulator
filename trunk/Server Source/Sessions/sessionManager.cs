@@ -40,23 +40,39 @@ namespace AQWE.Sessions
             return Database.checkExists("users", "name", Username);
         }
 
+        public static userSession getInstance(int userID)
+        {
+            if (_Sessions.ContainsKey(userID))
+                return (userSession)_Sessions[userID];
+            else
+                throw new Exception("User id: " + userID + " doesn't exist");
+        }
+
         public static void attemptLogin(string Username, string Password, Packets pH)
         {
             string[] Data = Database.runReadRowStrings("SELECT id,name,access,level,password,salt FROM users WHERE name = '" + Username + "'");
             if (Data.Length > 0)
             {
-                User userInfo = new User();
-                userInfo.userID = int.Parse(Data[0]);
-                userInfo.Username = Data[1];
-                userInfo.Access = int.Parse(Data[2]);
-                userInfo.Level = int.Parse(Data[3]);
-                userInfo.connectionID = pH.Connection.connectionID;
+                try
+                {
+                    User userInfo = new User();
+                    userInfo.userID = int.Parse(Data[0]);
+                    userInfo.Username = Data[1];
+                    userInfo.Access = int.Parse(Data[2]);
+                    userInfo.Level = int.Parse(Data[3]);
+                    userInfo.connectionID = pH.Connection.connectionID;
 
-                userSession Session = new userSession(pH.Connection, userInfo);
-                pH.Connection.Session = Session;
-                _Sessions.Add(userInfo.userID, Session);
+                    userSession Session = new userSession(pH.Connection, userInfo);
+                    pH.Connection.Session = Session;
+                    _Sessions.Add(userInfo.userID, Session);
 
-                pH.Connection.sendMessage("%xt%loginResponse%-1%true%" + userInfo.userID + "%" + userInfo.Username + "%" + Settings.server_motd + "%1262809466137%sNews=" + Settings.client_news + ",sMap=" + Settings.client_map + ",sBook=" + Settings.client_book + "%");
+                    pH.Connection.sendMessage("%xt%loginResponse%-1%true%" + userInfo.userID + "%" + userInfo.Username + "%" + Settings.server_motd + "%1262809466137%sNews=" + Settings.client_news + ",sMap=" + Settings.client_map + ",sBook=" + Settings.client_book + "%");
+                }
+                catch
+                {
+                    Logging.logWarning("Disconnected user because another user with same id is already logged in.");
+                    Sockets.endConnection(pH.Connection, pH.Connection.Session.userInfo.roomID);
+                }
             }
             else
             {

@@ -83,6 +83,7 @@ namespace AQWE.Game.Users
         internal int BagSlots = 40;
         internal int UpgradeDays = 400;
         internal int ColorBase = 8556972;
+        internal int Speed = 8;
         #endregion
     }
 }
