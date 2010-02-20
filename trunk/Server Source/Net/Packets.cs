@@ -99,7 +99,7 @@ namespace AQWE.Net
                 Connection.Session.userInfo.roomID = _roomID;
                 Connection.Session.userInfo.playerID = _playerID;
                 
-                returnPacket = "<msg t='sys'><body action='joinOK' r='" + _roomID + "'><pid id='" + _playerID + "'/><vars />";
+                returnPacket = "<msg t='sys'><body action='joinOK' r='" + roomManager.getGameRoomID(_roomID) + "'><pid id='" + _playerID + "'/><vars />";
                 returnPacket += roomManager.getPlayers(_roomID);
                 returnPacket += "</body></msg>";
                 

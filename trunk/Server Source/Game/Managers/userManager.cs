@@ -46,6 +46,7 @@ namespace AQWE.Game.Managers
 
         private Queue sendQueue = new Queue();
         private bool sending = false;
+        private string lastSentMessage = "none";
         #endregion
 
         #region Properties
@@ -154,16 +155,18 @@ namespace AQWE.Game.Managers
 
                 if (this.Socket.Connected == true)
                 {
-                    sendQueue.Enqueue(Message);
-                    if (sendQueue.Count == 1 && sending == false)
-                    {
-                        byte[] Data = Encoding.UTF8.GetBytes(Message + Convert.ToChar(0x0));
-                        this.Socket.BeginSend(Data, 0, Data.Length, SocketFlags.None, new AsyncCallback(sentMessage), null);
-                        Logging.logServerMessage(this.connectionID, Message);
-                        sending = true;
-                        Data = null;
-                        Message = null;
-                    }
+                        sendQueue.Enqueue(Message);
+                        if (sendQueue.Count == 1 && sending == false)
+                        {
+                            Message = sendQueue.Dequeue().ToString();
+                            byte[] Data = Encoding.UTF8.GetBytes(Message + Convert.ToChar(0x0));
+                            this.Socket.BeginSend(Data, 0, Data.Length, SocketFlags.None, new AsyncCallback(sentMessage), null);
+                            Logging.logServerMessage(this.connectionID, Message);
+                            lastSentMessage = Message;
+                            sending = true;
+                            Data = null;
+                            Message = null;
+                        }
                 }
             }
             catch (Exception ex)
@@ -184,12 +187,11 @@ namespace AQWE.Game.Managers
                 Logging.logServerMessage(this.connectionID, Message);
                 sending = true;
                 Data = null;
-                Message = null;
             }
             else
             {
                 try 
-                { 
+                {
                     this.Socket.EndSend(iAr);
                     sending = false;
 
@@ -201,7 +203,6 @@ namespace AQWE.Game.Managers
                         Logging.logServerMessage(this.connectionID, Message);
                         sending = true;
                         Data = null;
-                        Message = null;
                     }
                 }
                 catch (Exception ex)
