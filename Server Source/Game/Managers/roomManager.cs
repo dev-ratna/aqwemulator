@@ -85,8 +85,11 @@ namespace AQWE.Game.Managers
         public static void UserLeft(userManager _user, int _roomID)
         {
             int tRoomID = getGameRoomID(_roomID);
+            Room _room = getInstance(_roomID);
             sendToRoom(_roomID, "<msg t='sys'><body action='userGone' r='" + tRoomID + "'><user id='" + _user.Session.userInfo.userID + "' /></body></msg>");
             sendToRoom(_roomID, "%xt%exitArea%-1%" + _user.Session.userInfo.userID + "%");
+
+            _room.RemoveUser(_user.Session.userInfo.userID);
         }
 
         public static string getPlayers(int _roomID)

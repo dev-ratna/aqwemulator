@@ -48,7 +48,7 @@ namespace AQWE.Net
                                         Connection.Session.userInfo.Frame = packet[5];
                                         Connection.Session.userInfo.Pad = packet[6];
                                         break;
-                                    case "retrieveUserData":
+                                    case "retrieveUserDatas":
                                         handleRetrieveUserDatas(packet);
                                         break;
                                     case "cmd":

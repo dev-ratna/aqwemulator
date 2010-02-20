@@ -27,4 +27,5 @@ Build 1.0.4:
 
 Build 1.0.5:
 - Issue 1, fixed.
-- Done with retrieveUserData
+- Done with retrieveUserDatas.
+- Issue 2, fixed.
