@@ -166,5 +166,10 @@ namespace AQWE.Game.Managers
         {
             return _roomID + 1; //return _roomID + 4;
         }
+
+        public static int getClientRoomID(int _roomID)
+        {
+            return _roomID - 1;
+        }
     }
 }

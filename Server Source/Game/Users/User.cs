@@ -79,6 +79,10 @@ namespace AQWE.Game.Users
         /// User's pad.
         /// </summary>
         internal string Pad = "Spawn";
+        internal int ColorAccessory = 10027008;
+        internal int BagSlots = 40;
+        internal int UpgradeDays = 400;
+        internal int ColorBase = 8556972;
         #endregion
     }
 }
