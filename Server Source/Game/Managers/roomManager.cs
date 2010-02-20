@@ -133,7 +133,7 @@ namespace AQWE.Game.Managers
                 if (!firstTime)
                     ret += ",";
 
-                ret += "[\"uoName:" + _userInfo.Username + "\",\"strUsername:" + _userInfo.Username + "\",\"strFrame:" + _userInfo.Frame + "\",\"strPad:" + _userInfo.Pad + "\",\"intState:" + _userInfo.State + "\",\"intLevel:" + _userInfo.Level + "\",\"intHP:" + _userInfo.HP + "\",\"intMP:" + _userInfo.MP + "\",\"intHPMax:" + _userInfo.MaxHP + "\",\"intMPMax:" + _userInfo.MaxMP + "\",\"tx:" + _userInfo.X + "\",\"ty:" + _userInfo.Y + "\",\"afk:" + _user.isAFK + "\"]";
+                ret += "{\"uoName\":\"" + _userInfo.Username + "\",\"strUsername\":\"" + _userInfo.Username + "\",\"strFrame\":\"" + _userInfo.Frame + "\",\"strPad\":\"" + _userInfo.Pad + "\",\"intState\":" + _userInfo.State + ",\"intLevel\":\"" + _userInfo.Level + "\",\"intHP\":\"" + _userInfo.HP + "\",\"intMP\":\"" + _userInfo.MP + "\",\"intHPMax\":\"" + _userInfo.MaxHP + "\",\"intMPMax\":\"" + _userInfo.MaxMP + "\",\"tx\":\"" + _userInfo.X + "\",\"ty\":\"" + _userInfo.Y + "\",\"afk\":\"" + _user.isAFK + "\"}";
 
                 firstTime = false;
             }
@@ -164,7 +164,7 @@ namespace AQWE.Game.Managers
 
         public static int getGameRoomID(int _roomID)
         {
-            return _roomID; //return _roomID + 4;
+            return _roomID + 1; //return _roomID + 4;
         }
     }
 }
