@@ -114,7 +114,7 @@ namespace AQWE.Game.Managers
 
             string ret = "{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"moveToArea\",\"areaName\":\"" + _room.mapName + "-" + _room.ID + "\",\"intKillCount\":0,\"uoBranch\":";
             ret += getUoBranch(_roomID);
-            ret += "\"strMapFileName\":\"" + _room.fileName + "\",\"intType\":\"2\",\"monBranch\":[],\"wB\":[],\"sExtra\":\"a1=test1,a2=test2\",\"areaId\":" + tRoomID + ",\"strMapName\":\"" + _room.mapName + "\"}}}";
+            ret += ",\"strMapFileName\":\"" + _room.fileName + "\",\"intType\":\"2\",\"monBranch\":[],\"wB\":[],\"sExtra\":\"a1=test1,a2=test2\",\"areaId\":" + tRoomID + ",\"strMapName\":\"" + _room.mapName + "\"}}}";
             
             return ret;
         }
@@ -133,7 +133,7 @@ namespace AQWE.Game.Managers
                 if (!firstTime)
                     ret += ",";
 
-                ret += "{\"uoName\":\"" + _userInfo.Username + "\",\"strUsername\":\"" + _userInfo.Username + "\",\"strFrame\":\"" + _userInfo.Frame + "\",\"strPad\":\"" + _userInfo.Pad + "\",\"intState\":" + _userInfo.State + ",\"intLevel\":\"" + _userInfo.Level + "\",\"intHP\":\"" + _userInfo.HP + "\",\"intMP\":\"" + _userInfo.MP + "\",\"intHPMax\":\"" + _userInfo.MaxHP + "\",\"intMPMax\":\"" + _userInfo.MaxMP + "\",\"tx\":\"" + _userInfo.X + "\",\"ty\":\"" + _userInfo.Y + "\",\"afk\":\"" + _user.isAFK + "\"}";
+                ret += "[\"uoName:" + _userInfo.Username + "\",\"strUsername:" + _userInfo.Username + "\",\"strFrame:" + _userInfo.Frame + "\",\"strPad:" + _userInfo.Pad + "\",\"intState:" + _userInfo.State + "\",\"intLevel:" + _userInfo.Level + "\",\"intHP:" + _userInfo.HP + "\",\"intMP:" + _userInfo.MP + "\",\"intHPMax:" + _userInfo.MaxHP + "\",\"intMPMax:" + _userInfo.MaxMP + "\",\"tx:" + _userInfo.X + "\",\"ty:" + _userInfo.Y + "\",\"afk:" + _user.isAFK + "\"]";
 
                 firstTime = false;
             }
