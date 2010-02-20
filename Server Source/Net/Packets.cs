@@ -51,6 +51,15 @@ namespace AQWE.Net
                                     case "retrieveUserDatas":
                                         handleRetrieveUserDatas(packet);
                                         break;
+                                    case "mv":
+                                        Room _room = roomManager.getInstance(int.Parse(packet[4]));
+                                        User _userInfo = Connection.Session.userInfo;
+
+                                        _userInfo.X = int.Parse(packet[5]);
+                                        _userInfo.Y = int.Parse(packet[6]);
+
+                                        roomManager.sendToRoom(_room.ID, "%xt%uotls%-1%" + _userInfo.Username + "%sp:" + _userInfo.Speed + ",tx:" + _userInfo.X + ",ty:" + _userInfo.Y + ",strFrame:" + _userInfo.Frame + "%");
+                                        break;
                                     case "cmd":
                                         switch (packet[5])
                                         {

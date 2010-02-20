@@ -44,7 +44,7 @@ namespace AQWE
         private void writeInfo()
         {
             Logging.logHolyInfo("HardCore Emulator");
-            Logging.logHolyInfo("Build: 1.0.4");
+            Logging.logHolyInfo("Build: 1.0.5");
             Logging.logHolyInfo("- AdventureQuest Worlds Emulator.");
             this.writeBlank();
             Logging.logHolyInfo("Developed by Syntax & Divien.");

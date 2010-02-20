@@ -29,3 +29,5 @@ Build 1.0.5:
 - Issue 1, fixed.
 - Done with retrieveUserDatas.
 - Issue 2, fixed.
+- Users can now see each other.
+- Done with movement.
