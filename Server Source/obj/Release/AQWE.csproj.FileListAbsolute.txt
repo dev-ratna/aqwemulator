@@ -1,8 +1,0 @@
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\bin\Release\AQWE.exe
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\bin\Release\AQWE.pdb
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Release\ResolveAssemblyReference.cache
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Release\AQWE.frmMain.resources
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Release\AQWE.Properties.Resources.resources
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Release\AQWE.csproj.GenerateResource.Cache
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Release\AQWE.exe
-C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Release\AQWE.pdb
