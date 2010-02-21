@@ -1,0 +1,11 @@
+﻿################################ Credits ################################
+These are the creators/developers/helpers/editors. If you have 
+done anything with this emulator then add your details in
+the following format:
+- username <rank/what you have done.> <email>
+
+example: Erocix3 <Fixed various bugs> <coolboy2@hotmail.com>
+#########################################################################
+
+Syntax <Founder/Head Developer> <azzimi@hotmail.com>
+Divien <Co-Founder/Developer> <en3rgyx@gmail.com>
