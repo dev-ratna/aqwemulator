@@ -19,6 +19,7 @@ namespace AQWE.Data
             Logging.logHolyInfo("Preloading game database...");
             loadMaps();
             loadHairs();
+            loadItems();
             Logging.logHolyInfo("Game database preloaded.");
         }
 
@@ -69,6 +70,13 @@ namespace AQWE.Data
             {
                 Logging.logError(ex.Message);
             }
+        }
+
+        public static void loadItems()
+        {
+            //Logging.logHolyInfo("Preloading items...");
+
+            //int[] itemIDs = Database.runReadColumnIntegers("SELECT
         }
     }
 }

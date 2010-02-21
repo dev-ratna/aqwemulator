@@ -16,6 +16,21 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`aqw_db` /*!40100 DEFAULT CHARACTER SET 
 
 USE `aqw_db`;
 
+/*Table structure for table `hairs` */
+
+DROP TABLE IF EXISTS `hairs`;
+
+CREATE TABLE `hairs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `hairs` */
+
+insert  into `hairs`(`id`,`name`,`file_name`) values (1,NULL,'hair/M/Default.swf');
+
 /*Table structure for table `maps` */
 
 DROP TABLE IF EXISTS `maps`;
@@ -48,7 +63,7 @@ CREATE TABLE `servers` (
 
 /*Data for the table `servers` */
 
-insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','127.0.0.1',1,500,1,1);
+insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','5.80.74.229',1,500,1,1);
 
 /*Table structure for table `system_config` */
 
@@ -75,17 +90,18 @@ CREATE TABLE `users` (
   `salt` varchar(255) DEFAULT NULL,
   `level` int(11) DEFAULT '1',
   `age` int(11) DEFAULT '15',
+  `hair_id` int(11) DEFAULT '1',
   `access` int(11) DEFAULT '0',
   `upg_days` int(11) DEFAULT '9999',
   `send_email` int(11) DEFAULT '0',
   `cc_only` tinyint(1) DEFAULT '0',
   `upg_expire_date` varchar(255) DEFAULT '01-01-3000T00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`password`,`email`,`salt`,`level`,`age`,`access`,`upg_days`,`send_email`,`cc_only`,`upg_expire_date`) values (1,'demo','e91199d07f6c26b7cceaa20cf627b7768806e32f','demo@demo.com','demo',1,15,1,9999,0,0,'01-01-3000T00:00:00');
+insert  into `users`(`id`,`name`,`password`,`email`,`salt`,`level`,`age`,`hair_id`,`access`,`upg_days`,`send_email`,`cc_only`,`upg_expire_date`) values (1,'demo','e91199d07f6c26b7cceaa20cf627b7768806e32f','demo@demo.com','demo',1,15,1,1,9999,0,0,'01-01-3000T00:00:00'),(2,'demo2','e91199d07f6c26b7cceaa20cf627b7768806e32f','demo@demo.com','demo',1,15,1,1,9999,0,0,'01-01-3000T00:00:00');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

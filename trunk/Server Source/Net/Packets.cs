@@ -59,7 +59,7 @@ namespace AQWE.Net
                                         if (Connection.Session.userInfo.Afk == true)
                                             Connection.Session.userInfo.Afk = false;
 
-                                        Room _room = roomManager.getInstance(int.Parse(packet[4]));
+                                        Room _room = roomManager.getInstance(roomManager.getClientRoomID(int.Parse(packet[4])));
                                         User _userInfo = Connection.Session.userInfo;
 
                                         _userInfo.X = int.Parse(packet[5]);
@@ -108,8 +108,8 @@ namespace AQWE.Net
 
         public void handleRetrieveUserDatas(string[] Packets)
         {
-            //try
-            //{
+            try
+            {
                 int roomID = int.Parse(Packets[4]);
                 Room _room = (Room)roomManager.getInstance(roomManager.getClientRoomID(roomID));
 
@@ -133,11 +133,11 @@ namespace AQWE.Net
 
                 returnPacket += "]}}}";
                 Connection.sendMessage(returnPacket);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logging.logError(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                Logging.logError(ex.Message);
+            }
         }
 
         public void handleJoin(string[] Message)
