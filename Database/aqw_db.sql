@@ -29,7 +29,24 @@ CREATE TABLE `hairs` (
 
 /*Data for the table `hairs` */
 
-insert  into `hairs`(`id`,`name`,`file_name`) values (1,NULL,'hair/M/Default.swf');
+insert  into `hairs`(`id`,`name`,`file_name`) values (1,'Default','hair/M/Default.swf');
+
+/*Table structure for table `items` */
+
+DROP TABLE IF EXISTS `items`;
+
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  `linkage` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `items` */
+
+insert  into `items`(`id`,`name`,`file_name`,`linkage`,`type`) values (1,'Royal Office','RoyalOffice.swf','RoyalOffice','co');
 
 /*Table structure for table `maps` */
 
@@ -63,7 +80,7 @@ CREATE TABLE `servers` (
 
 /*Data for the table `servers` */
 
-insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','5.80.74.229',1,500,1,1);
+insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','5.80.74.229',0,500,1,1);
 
 /*Table structure for table `system_config` */
 
@@ -77,6 +94,22 @@ CREATE TABLE `system_config` (
 /*Data for the table `system_config` */
 
 insert  into `system_config`(`ckey`,`cvalue`) values ('server.port','5588'),('server.max.connections','500'),('server.back.log','10'),('client.news','news/News-05Feb10.swf'),('client.map','news/Map-Jan1510.swf'),('client.book','news/Book-5Feb10.swf'),('server.motd','Private server concept and design by Syntax & Divien.'),('server.name','localhost'),('room.user.limit','10'),('map.first.join','1');
+
+/*Table structure for table `user_items` */
+
+DROP TABLE IF EXISTS `user_items`;
+
+CREATE TABLE `user_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `equipped` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `user_items` */
+
+insert  into `user_items`(`id`,`item_id`,`user_id`,`equipped`) values (1,1,1,1);
 
 /*Table structure for table `users` */
 

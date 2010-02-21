@@ -127,7 +127,7 @@ namespace AQWE.Net
                         User _userInfo = (User)_user.Session.userInfo;
                         Hair _userHair = (Hair)hairManager.getInstance(_userInfo.HairID);
 
-                        returnPacket += "{\"uid\":" + _userInfo.userID + ",\"strFrame\":\"" + _userInfo.Frame + "\",\"strPad\":\"" + _userInfo.Pad + "\",\"data\":{\"intColorAccessory\":\"" + _userInfo.ColorAccessory + "\",\"intColorTrim\":\"" + _userInfo.ColorTrim + "\",\"intMP\":" + _userInfo.MP + ",\"intLevel\":\"" + _userInfo.Level + "\",\"intColorSkin\":\"" + _userInfo.ColorSkin + "\",\"intMPMax\":" + _userInfo.MaxMP + ",\"intAccessLevel\":\"" + _userInfo.Access + "\",\"intHP\":" + _userInfo.HP + ",\"intColorBase\":\"" + _userInfo.ColorBase + "\",\"strHairFilename\":\"" + _userHair.Filename + "\",\"intHPMax\":" + _userInfo.MaxHP + ",\"intColorHair\":\"" + _userInfo.ColorHair + "\",\"HairID\":\"" + _userInfo.HairID + "\",\"intColorEye\":\"" + _userInfo.ColorEye + "\",\"strHairName\":\"" + _userHair.Name + "\",\"strGender\":\"" + _userInfo.Gender + "\",\"strUsername\":\"" + _userInfo.Username + "\",\"strClassName\":\"" + _userInfo.className + "\",\"eqp\":{\"pe\":{\"ItemID\":\"152\",\"sFile\":\"items/pets/daimyo.swf\",\"sLink\":\"PetDaimyo\"},\"co\":{\"ItemID\":\"2824\",\"sFile\":\"RoyalOffice.swf\",\"sLink\":\"RoyalOffice\"},\"Weapon\":{\"ItemID\":\"1296\",\"sFile\":\"items/swords/beamswordred.swf\",\"sLink\":\"\"},\"ar\":{\"ItemID\":\"2083\",\"sFile\":\"sepulchure_skin.swf\",\"sLink\":\"Sepulchure\"},\"ho\":{\"ItemID\":\"1683\",\"sFile\":\"houses/house-Cave.swf\",\"sLink\":\"none\"}}}}";
+                        returnPacket += "{\"uid\":" + _userInfo.userID + ",\"strFrame\":\"" + _userInfo.Frame + "\",\"strPad\":\"" + _userInfo.Pad + "\",\"data\":{\"intColorAccessory\":\"" + _userInfo.ColorAccessory + "\",\"intColorTrim\":\"" + _userInfo.ColorTrim + "\",\"intMP\":" + _userInfo.MP + ",\"intLevel\":\"" + _userInfo.Level + "\",\"intColorSkin\":\"" + _userInfo.ColorSkin + "\",\"intMPMax\":" + _userInfo.MaxMP + ",\"intAccessLevel\":\"" + _userInfo.Access + "\",\"intHP\":" + _userInfo.HP + ",\"intColorBase\":\"" + _userInfo.ColorBase + "\",\"strHairFilename\":\"" + _userHair.Filename + "\",\"intHPMax\":" + _userInfo.MaxHP + ",\"intColorHair\":\"" + _userInfo.ColorHair + "\",\"HairID\":\"" + _userInfo.HairID + "\",\"intColorEye\":\"" + _userInfo.ColorEye + "\",\"strHairName\":\"" + _userHair.Name + "\",\"strGender\":\"" + _userInfo.Gender + "\",\"strUsername\":\"" + _userInfo.Username + "\",\"strClassName\":\"" + _userInfo.className + "\",\"eqp\":{" + userItemManager.getEquippedItems(_userInfo.userID) + "}}}";
                     }
                 }
 
@@ -165,6 +165,7 @@ namespace AQWE.Net
                 this.Connection.sendMessage("%xt%server%-1%You joined \"" + _room.mapName + "-" + _roomID + "\"!%");
 
                 roomManager.UserJoined(Connection, _roomID);
+                userItemManager.loadItems(Connection.Session.userInfo.userID);
             }
             catch (Exception ex)
             {

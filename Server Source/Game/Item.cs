@@ -14,7 +14,6 @@ namespace AQWE.Game
         internal string Filename;
         internal string Linkage;
         internal string Type;
-        internal bool Equipped;
 
         public Item(int ItemID)
         {

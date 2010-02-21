@@ -74,9 +74,28 @@ namespace AQWE.Data
 
         public static void loadItems()
         {
-            //Logging.logHolyInfo("Preloading items...");
+            Logging.logHolyInfo("Preloading items...");
 
-            //int[] itemIDs = Database.runReadColumnIntegers("SELECT
+            int[] itemIDs = Database.runReadColumnIntegers("SELECT id FROM items WHERE 1=1", 0);
+
+            try
+            {
+                foreach (int tempID in itemIDs)
+                {
+                    Item _item = new Item(tempID);
+                    _item.Name = Database.runRead("SELECT name FROM items WHERE id = " + tempID);
+                    _item.Filename = Database.runRead("SELECT file_name FROM items WHERE id = " + tempID);
+                    _item.Linkage = Database.runRead("SELECT linkage FROM items WHERE id = " + tempID);
+                    _item.Type = Database.runRead("SELECT type FROM items WHERE id = " + tempID);
+
+                    Logging.logHolyInfo("Preloaded '" + _item.Name + "'...");
+                }
+                Logging.logHolyInfo("Preloaded " + itemIDs.Length + " items.");
+            }
+            catch (Exception ex)
+            {
+                Logging.logError(ex.Message);
+            }
         }
     }
 }
