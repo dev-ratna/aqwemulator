@@ -108,8 +108,8 @@ namespace AQWE.Net
 
         public void handleRetrieveUserDatas(string[] Packets)
         {
-            try
-            {
+            //try
+            //{
                 int roomID = int.Parse(Packets[4]);
                 Room _room = (Room)roomManager.getInstance(roomManager.getClientRoomID(roomID));
 
@@ -118,7 +118,7 @@ namespace AQWE.Net
 
                 if (pL > 5)
                 {
-                    for (int i = 5; i < pL; i++)
+                    for (int i = 5; i < pL - 1; i++)
                     {
                         if (i != 5)
                             returnPacket += ",";
@@ -133,11 +133,11 @@ namespace AQWE.Net
 
                 returnPacket += "]}}}";
                 Connection.sendMessage(returnPacket);
-            }
-            catch (Exception ex)
-            {
-                Logging.logError(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Logging.logError(ex.Message);
+            //}
         }
 
         public void handleJoin(string[] Message)
