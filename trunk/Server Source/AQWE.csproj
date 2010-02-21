@@ -65,9 +65,11 @@
     <Compile Include="Game\Managers\ItemManager.cs" />
     <Compile Include="Game\Managers\mapManager.cs" />
     <Compile Include="Game\Managers\roomManager.cs" />
+    <Compile Include="Game\Managers\userItemManager.cs" />
     <Compile Include="Game\Map.cs" />
     <Compile Include="Game\Item.cs" />
     <Compile Include="Game\Rooms\Room.cs" />
+    <Compile Include="Game\Users\Item.cs" />
     <Compile Include="Game\Users\User.cs" />
     <Compile Include="Game\Managers\userManager.cs" />
     <Compile Include="Net\Packets.cs" />

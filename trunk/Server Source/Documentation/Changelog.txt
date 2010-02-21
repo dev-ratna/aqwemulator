@@ -33,3 +33,12 @@ Build 1.0.5:
 - Done with movement.
 - Hairs are now preloaded.
 - Issue 3, fixed.
+
+Build 1.0.6:
+- Done with items.
+- Done with item manager.
+- Items are now preloaded.
+- Done with user items.
+- Done with user item manager.
+- User items are now loaded.
+- 100% done with retrieveUserDatas.
