@@ -18,6 +18,7 @@ namespace AQWE.Data
         {
             Logging.logHolyInfo("Preloading game database...");
             loadMaps();
+            loadHairs();
             Logging.logHolyInfo("Game database preloaded.");
         }
 
@@ -35,14 +36,39 @@ namespace AQWE.Data
                 foreach (int tempID in mapIDs) {
                     Map _map = new Map(tempID);
 
-                    _map.Name       = Database.runRead("SELECT name FROM maps WHERE id = '" + tempID + "'");
-                    _map.Filename   = Database.runRead("SELECT file_name FROM maps WHERE id = '" + tempID + "'");
+                    _map.Name       = Database.runRead("SELECT name FROM maps WHERE id = " + tempID);
+                    _map.Filename   = Database.runRead("SELECT file_name FROM maps WHERE id = " + tempID);
 
                     Logging.logHolyInfo("Preloaded '" + _map.Name + "'...");
                 }
                 Logging.logHolyInfo("Preloaded " + mapIDs.Length + " maps.");
             }
             catch (Exception ex) { Logging.logError(ex.Message); }
+        }
+
+        /// <summary>
+        /// Preloads all hairs from the database.
+        /// </summary>
+        public static void loadHairs()
+        {
+            Logging.logHolyInfo("Preloading hairs...");
+
+            int[] hairIDs = Database.runReadColumnIntegers("SELECT id FROM hairs WHERE 1=1", 0);
+
+            try
+            {
+                foreach (int tempID in hairIDs)
+                {
+                    Hair _hair = new Hair(tempID);
+                    _hair.Name = Database.runRead("SELECT name FROM hairs WHERE id = " + tempID);
+                    _hair.Filename = Database.runRead("SELECT file_name FROM hairs WHERE id = " + tempID);
+                }
+                Logging.logHolyInfo("Preloaded " + hairIDs.Length + " hairs.");
+            }
+            catch (Exception ex)
+            {
+                Logging.logError(ex.Message);
+            }
         }
     }
 }

@@ -50,7 +50,7 @@ namespace AQWE.Sessions
 
         public static void attemptLogin(string Username, string Password, Packets pH)
         {
-            string[] Data = Database.runReadRowStrings("SELECT id,name,access,level,password,salt FROM users WHERE name = '" + Username + "'");
+            string[] Data = Database.runReadRowStrings("SELECT id,name,access,level,hair_id,password,salt FROM users WHERE name = '" + Username + "'");
             if (Data.Length > 0)
             {
                 try
@@ -60,6 +60,7 @@ namespace AQWE.Sessions
                     userInfo.Username = Data[1];
                     userInfo.Access = int.Parse(Data[2]);
                     userInfo.Level = int.Parse(Data[3]);
+                    userInfo.HairID = int.Parse(Data[4]);
                     userInfo.connectionID = pH.Connection.connectionID;
 
                     userSession Session = new userSession(pH.Connection, userInfo);

@@ -25,7 +25,7 @@ namespace AQWE.Game.Rooms
             roomManager.Add(this.mapID, this);
         }
 
-        public userManager getUserIntsance(int userID)
+        public userManager getUserInstance(int userID)
         {
             if (activeUsers.ContainsKey(userID))
                 return (userManager)activeUsers[userID];
@@ -33,7 +33,7 @@ namespace AQWE.Game.Rooms
                 throw new Exception("User ID: " + userID + " doesn't exist");
         }
 
-        public userManager getPlayerIntsance(int _playerID)
+        public userManager getPlayerInstance(int _playerID)
         {
             foreach (KeyValuePair<int, userManager> KVP in activeUsers)
             {
