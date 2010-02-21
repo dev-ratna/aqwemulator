@@ -62,9 +62,11 @@
     </Compile>
     <Compile Include="Game\Hair.cs" />
     <Compile Include="Game\Managers\hairManager.cs" />
+    <Compile Include="Game\Managers\ItemManager.cs" />
     <Compile Include="Game\Managers\mapManager.cs" />
     <Compile Include="Game\Managers\roomManager.cs" />
     <Compile Include="Game\Map.cs" />
+    <Compile Include="Game\Item.cs" />
     <Compile Include="Game\Rooms\Room.cs" />
     <Compile Include="Game\Users\User.cs" />
     <Compile Include="Game\Managers\userManager.cs" />

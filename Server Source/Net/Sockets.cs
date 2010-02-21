@@ -123,6 +123,7 @@ namespace AQWE.Net
         {
             if (Connections.ContainsKey(Connection.connectionID))
             {
+                //Sessions.sessionManager._Sessions.Remove(Connection.Session.userInfo.userID);
                 Logging.logInfo("Ended connection " + Connection.connectionID + "[" + Connection.IP + "]");
                 Connection.Close(SocketShutdown.Both);
                 Connections.Remove(Connection.connectionID);
@@ -142,6 +143,7 @@ namespace AQWE.Net
                 if (_roomID != -1)
                     roomManager.UserLeft(Connection, _roomID);
 
+                //Sessions.sessionManager._Sessions.Remove(Connection.Session.userInfo.userID);
                 Logging.logInfo("Ended connection " + Connection.connectionID + "[" + Connection.IP + "]");
                 Connection.Close(SocketShutdown.Both);
                 Connections.Remove(Connection.connectionID);
