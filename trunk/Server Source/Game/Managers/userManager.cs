@@ -221,8 +221,8 @@ namespace AQWE.Game.Managers
         {
             try
             {
-                //this.Socket.Shutdown(How);
-                //this.Socket.Close();
+                this.Socket.Shutdown(How);
+                this.Socket.Close();
             }
             catch { Logging.logError("Error while shutting down socket"); }
         }

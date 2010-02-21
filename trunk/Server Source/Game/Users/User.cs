@@ -79,11 +79,54 @@ namespace AQWE.Game.Users
         /// User's pad.
         /// </summary>
         internal string Pad = "Spawn";
+        /// <summary>
+        /// Color accessory.
+        /// </summary>
         internal int ColorAccessory = 10027008;
+        /// <summary>
+        /// Bag slots
+        /// </summary>
         internal int BagSlots = 40;
+        /// <summary>
+        /// Member days left.
+        /// </summary>
         internal int UpgradeDays = 400;
+        /// <summary>
+        /// Armor color base.
+        /// </summary>
         internal int ColorBase = 8556972;
+        /// <summary>
+        /// Walk speed.
+        /// </summary>
         internal int Speed = 8;
+        /// <summary>
+        /// Armor color trim.
+        /// </summary>
+        internal int ColorTrim = 65793;
+        /// <summary>
+        /// Color skin.
+        /// </summary>
+        internal int ColorSkin = 16509316;
+        /// <summary>
+        /// Hair id.
+        /// </summary>
+        internal int HairID = 1;
+        /// <summary>
+        /// Hair color.
+        /// </summary>
+        internal int ColorHair = 2500663;
+        /// <summary>
+        /// Eye color.
+        /// </summary>
+        internal int ColorEye = 26367;
+        /// <summary>
+        /// Character gender.
+        /// </summary>
+        internal string Gender = "M";
+        /// <summary>
+        /// Character class.
+        /// </summary>
+        internal string className = "DoomKnight";
         #endregion
     }
 }

@@ -60,6 +60,8 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Hair.cs" />
+    <Compile Include="Game\Managers\hairManager.cs" />
     <Compile Include="Game\Managers\mapManager.cs" />
     <Compile Include="Game\Managers\roomManager.cs" />
     <Compile Include="Game\Map.cs" />

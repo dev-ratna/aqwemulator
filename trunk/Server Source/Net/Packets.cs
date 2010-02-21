@@ -8,6 +8,7 @@ using System.Threading;
 using System.Diagnostics;
 
 using AQWE.Core;
+using AQWE.Game;
 using AQWE.Sessions;
 using AQWE.Game.Rooms;
 using AQWE.Game.Users;
@@ -51,7 +52,13 @@ namespace AQWE.Net
                                     case "retrieveUserDatas":
                                         handleRetrieveUserDatas(packet);
                                         break;
+                                    case "retrieveUserData":
+                                        handleRetrieveUserDatas(packet);
+                                        break;
                                     case "mv":
+                                        if (Connection.Session.userInfo.Afk == true)
+                                            Connection.Session.userInfo.Afk = false;
+
                                         Room _room = roomManager.getInstance(int.Parse(packet[4]));
                                         User _userInfo = Connection.Session.userInfo;
 
@@ -59,6 +66,9 @@ namespace AQWE.Net
                                         _userInfo.Y = int.Parse(packet[6]);
 
                                         roomManager.sendToRoom(_room.ID, "%xt%uotls%-1%" + _userInfo.Username + "%sp:" + _userInfo.Speed + ",tx:" + _userInfo.X + ",ty:" + _userInfo.Y + ",strFrame:" + _userInfo.Frame + "%");
+                                        break;
+                                    case "afk":
+                                        Connection.Session.userInfo.Afk = bool.Parse(packet[5]);
                                         break;
                                     case "cmd":
                                         switch (packet[5])
@@ -98,27 +108,36 @@ namespace AQWE.Net
 
         public void handleRetrieveUserDatas(string[] Packets)
         {
-            int roomID = int.Parse(Packets[4]);
-            Room _room = (Room)roomManager.getInstance(roomManager.getClientRoomID(roomID));
-
-            int pL = Packets.Length;
-            string returnPacket = "{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"initUserDatas\",\"a\":[";
-
-            if (pL > 5)
+            try
             {
-                for (int i = 5; i < pL; i++)
+                int roomID = int.Parse(Packets[4]);
+                Room _room = (Room)roomManager.getInstance(roomManager.getClientRoomID(roomID));
+
+                int pL = Packets.Length;
+                string returnPacket = "{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"initUserDatas\",\"a\":[";
+
+                if (pL > 5)
                 {
-                    if (i != 5)
-                        returnPacket += ",";
+                    for (int i = 5; i < pL; i++)
+                    {
+                        if (i != 5)
+                            returnPacket += ",";
 
-                    userManager _user = _room.getPlayerIntsance(int.Parse(Packets[i]));
-                    User _userInfo = _user.Session.userInfo;
-                    returnPacket = "{\"uid\":" + _userInfo.userID + ",\"strFrame\":\"" + _userInfo.Frame + "\",\"strPad\":\"" + _userInfo.Pad + "\",\"data\":{\"intColorAccessory\":\"" + _userInfo.ColorAccessory + "\",\"iCP\":0,\"intLevel\":\"" + _userInfo.Level + "\",\"iBagSlots\":" + _userInfo.BagSlots + ",\"ig0\":0,\"iUpgDays\":\"" + _userInfo.UpgradeDays + "\",\"intColorBase\":\"" + _userInfo.ColorBase + "\",\"sCountry\":\"EE\",\"iSTR\":\"0\",\"ip0\":0,\"iq0\":0,\"iAge\":\"13\",\"iWIS\":\"0\",\"intExpToLevel\":\"1000000\",\"intGold\":1201076,\"intMP\":" + _userInfo.MP + ",\"sHouseInfo\":[],\"iBankSlots\":0,\"iHouseSlots\":20,\"id0\":0,\"intColorSkin\":\"15388042\",\"intMPMax\":40,\"intHPMax\":500,\"dUpgExp\":\"2008-10-09T16:33:00\",\"iUpg\":\"1\",\"CharID\":\"" + _userInfo.userID + "\",\"strEmail\":\"en3rgyx@gmail.com\",\"iINT\":\"0\",\"intColorTrim\":\"5398908\",\"lastArea\":\"battleon-7\",\"iFounder\":\"0\",\"intDBExp\":0,\"intExp\":0,\"UserID\":\"" + _userInfo.userID + "\",\"ia1\":\"0\",\"ia0\":2,\"intHP\":" + _userInfo.HP + ",\"dCreated\":\"2008-10-10T16:33:00\",\"strQuests\":\"70000000000000000000004000000000000000001200000000\",\"bitSuccess\":\"1\",\"strHairName\":\"Saf1\",\"intColorEye\":\"26367\",\"iLCK\":\"0\",\"eqp\":{},\"iDailyAds\":0,\"iDBCP\":0,\"intDBGold\":1201076,\"intActivationFlag\":\"1\",\"intAccessLevel\":\"" + _userInfo.Access + "\",\"strHairFilename\":\"hair/M/Default.swf\",\"intColorHair\":\"65793\",\"HairID\":\"1\",\"strGender\":\"M\",\"strUsername\":\"" + _userInfo.Username + "\",\"iDEX\":\"0\",\"iDailyAdCap\":6,\"intCoins\":0,\"iEND\":\"0\",\"strMapName\":\"" + _room.mapName + "\"}}";
+                        userManager _user = (userManager)_room.getPlayerInstance(int.Parse(Packets[i]));
+                        User _userInfo = (User)_user.Session.userInfo;
+                        Hair _userHair = (Hair)hairManager.getInstance(_userInfo.HairID);
+
+                        returnPacket += "{\"uid\":" + _userInfo.userID + ",\"strFrame\":\"" + _userInfo.Frame + "\",\"strPad\":\"" + _userInfo.Pad + "\",\"data\":{\"intColorAccessory\":\"" + _userInfo.ColorAccessory + "\",\"intColorTrim\":\"" + _userInfo.ColorTrim + "\",\"intMP\":" + _userInfo.MP + ",\"intLevel\":\"" + _userInfo.Level + "\",\"intColorSkin\":\"" + _userInfo.ColorSkin + "\",\"intMPMax\":" + _userInfo.MaxMP + ",\"intAccessLevel\":\"" + _userInfo.Access + "\",\"intHP\":" + _userInfo.HP + ",\"intColorBase\":\"" + _userInfo.ColorBase + "\",\"strHairFilename\":\"" + _userHair.Filename + "\",\"intHPMax\":" + _userInfo.MaxHP + ",\"intColorHair\":\"" + _userInfo.ColorHair + "\",\"HairID\":\"" + _userInfo.HairID + "\",\"intColorEye\":\"" + _userInfo.ColorEye + "\",\"strHairName\":\"" + _userHair.Name + "\",\"strGender\":\"" + _userInfo.Gender + "\",\"strUsername\":\"" + _userInfo.Username + "\",\"strClassName\":\"" + _userInfo.className + "\",\"eqp\":{\"pe\":{\"ItemID\":\"152\",\"sFile\":\"items/pets/daimyo.swf\",\"sLink\":\"PetDaimyo\"},\"co\":{\"ItemID\":\"2824\",\"sFile\":\"RoyalOffice.swf\",\"sLink\":\"RoyalOffice\"},\"Weapon\":{\"ItemID\":\"1296\",\"sFile\":\"items/swords/beamswordred.swf\",\"sLink\":\"\"},\"ar\":{\"ItemID\":\"2083\",\"sFile\":\"sepulchure_skin.swf\",\"sLink\":\"Sepulchure\"},\"ho\":{\"ItemID\":\"1683\",\"sFile\":\"houses/house-Cave.swf\",\"sLink\":\"none\"}}}}";
+                    }
                 }
-            }
 
-            returnPacket += "]}}}";
-            Connection.sendMessage(returnPacket);
+                returnPacket += "]}}}";
+                Connection.sendMessage(returnPacket);
+            }
+            catch (Exception ex)
+            {
+                Logging.logError(ex.Message);
+            }
         }
 
         public void handleJoin(string[] Message)

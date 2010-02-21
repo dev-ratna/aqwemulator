@@ -31,3 +31,4 @@ Build 1.0.5:
 - Issue 2, fixed.
 - Users can now see each other.
 - Done with movement.
+- Hairs are now preloaded.
