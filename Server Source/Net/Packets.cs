@@ -76,7 +76,7 @@ namespace AQWE.Net
                                             case "ignoreList":
                                                 switch (packet[6])
                                                 {
-                                                    case "clearAll":
+                                                    case "$clearAll":
                                                         //this.Connection.sendMessage("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"cvu\",\"o\":{\"PCstRatio\":3.73,\"PChpDelta\":1640,\"baseHit\":0,\"PChpBase1\":360,\"resistRating\":17,\"baseCritValue\":1.7,\"PChpGoal100\":4000,\"intLevelCap\":100,\"baseMiss\":0.06,\"baseParry\":0.03,\"GstBase\":6,\"modRating\":3,\"baseResistValue\":0.7,\"baseBlockValue\":0.7,\"intHPperEND\":10,\"baseHaste\":0,\"baseBlock\":0,\"PChpBase100\":2000,\"intAPtoDPS\":20,\"baseCrit\":0.05,\"PCstBase\":8,\"baseEventValue\":0.05,\"PChpGoal1\":400,\"GstRatio\":2.8,\"intLevelMax\":100,\"bigNumberBase\":8,\"baseDodge\":0.04,\"PCDPSMod\":0.85}}}}");
                                                         break;
                                                     default:
@@ -116,7 +116,7 @@ namespace AQWE.Net
                 int pL = Packets.Length;
                 string returnPacket = "{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"initUserDatas\",\"a\":[";
 
-                if (pL > 5)
+                if (pL > 4)
                 {
                     for (int i = 5; i < pL - 1; i++)
                     {
