@@ -55,7 +55,7 @@ namespace AQWE.Net
                                         handleRetrieveUserDatas(packet);
                                         break;
                                     case "retrieveUserData":
-                                        handleRetrieveUserDatas(packet);
+                                        handleRetrieveUserData(packet);
                                         break;
                                     case "mv":
                                         Room _room = roomManager.getInstance(roomManager.getClientRoomID(int.Parse(packet[4])));
@@ -165,6 +165,26 @@ namespace AQWE.Net
                 }
 
                 returnPacket += "]}}}";
+                Connection.sendMessage(returnPacket);
+            }
+            catch (Exception ex)
+            {
+                Logging.logError(ex.Message);
+            }
+        }
+        public void handleRetrieveUserData(string[] Packets)
+        {
+            try
+            {
+                int roomID = int.Parse(Packets[4]);
+                Room _room = (Room)roomManager.getInstance(roomManager.getClientRoomID(roomID));
+
+                userManager _user = (userManager)_room.getPlayerInstance(int.Parse(Packets[5]));
+                User _userInfo = (User)_user.Session.userInfo;
+                Hair _userHair = (Hair)hairManager.getInstance(_userInfo.HairID);
+
+                string returnPacket = "{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"uid\":" + _userInfo.userID + ",\"strFrame\":\"" + _userInfo.Frame + "\",\"cmd\":\"initUserData\",\"strPad\":\"" + _userInfo.Pad + "\",\"data\":{\"intColorAccessory\":\"" + _userInfo.ColorAccessory + "\",\"intColorTrim\":\"" + _userInfo.ColorTrim + "\",\"intMP\":" + _userInfo.MP + ",\"intLevel\":\"" + _userInfo.Level + "\",\"intColorSkin\":\"" + _userInfo.ColorSkin + "\",\"intMPMax\":" + _userInfo.MaxMP + ",\"intAccessLevel\":\"" + _userInfo.Access + "\",\"intHP\":" + _userInfo.HP + ",\"intColorBase\":\"" + _userInfo.ColorBase + "\",\"strHairFilename\":\"" + _userHair.Filename + "\",\"intHPMax\":" + _userInfo.MaxHP + ",\"intColorHair\":\"" + _userInfo.ColorHair + "\",\"HairID\":\"" + _userInfo.HairID + "\",\"intColorEye\":\"" + _userInfo.ColorEye + "\",\"strHairName\":\"" + _userHair.Name + "\",\"strGender\":\"" + _userInfo.Gender + "\",\"strUsername\":\"" + _userInfo.Username + "\",\"strClassName\":\"" + _userInfo.className + "\",\"eqp\":{" + userItemManager.getEquippedItems(_userInfo.userID) + "}}}}}";
+
                 Connection.sendMessage(returnPacket);
             }
             catch (Exception ex)
