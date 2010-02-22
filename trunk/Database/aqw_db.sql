@@ -16,6 +16,34 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`aqw_db` /*!40100 DEFAULT CHARACTER SET 
 
 USE `aqw_db`;
 
+/*Table structure for table `actions` */
+
+DROP TABLE IF EXISTS `actions`;
+
+CREATE TABLE `actions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `ref` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `animation` varchar(255) DEFAULT NULL,
+  `ragne` int(11) DEFAULT NULL,
+  `fx` varchar(255) DEFAULT NULL,
+  `damage` varchar(255) DEFAULT NULL,
+  `mana` int(11) DEFAULT NULL,
+  `dsrc` varchar(255) DEFAULT NULL,
+  `auto` varchar(255) DEFAULT NULL,
+  `tgt` varchar(255) DEFAULT NULL,
+  `strl` varchar(255) DEFAULT NULL,
+  `cd` int(11) DEFAULT NULL,
+  `active` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `actions` */
+
+insert  into `actions`(`id`,`name`,`icon`,`ref`,`description`,`animation`,`ragne`,`fx`,`damage`,`mana`,`dsrc`,`auto`,`tgt`,`strl`,`cd`,`active`) values (1,'Auto attack','iwd1','none','A strong attack known only to disciplined fighters.','Attack1,Attack2',301,'m','1.1',0,'wDMG','true','h','',2000,'true');
+
 /*Table structure for table `hairs` */
 
 DROP TABLE IF EXISTS `hairs`;
@@ -80,7 +108,7 @@ CREATE TABLE `servers` (
 
 /*Data for the table `servers` */
 
-insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','5.80.74.229',0,500,1,1);
+insert  into `servers`(`id`,`name`,`ip`,`count`,`max`,`online`,`upgrade`) values (1,'localhost','5.80.74.229',0,500,0,1);
 
 /*Table structure for table `system_config` */
 
@@ -105,11 +133,11 @@ CREATE TABLE `user_items` (
   `user_id` int(11) DEFAULT NULL,
   `equipped` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user_items` */
 
-insert  into `user_items`(`id`,`item_id`,`user_id`,`equipped`) values (1,1,1,1);
+insert  into `user_items`(`id`,`item_id`,`user_id`,`equipped`) values (1,1,1,1),(2,1,2,1);
 
 /*Table structure for table `users` */
 

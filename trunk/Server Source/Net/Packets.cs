@@ -57,6 +57,9 @@ namespace AQWE.Net
                                     case "retrieveUserData":
                                         handleRetrieveUserData(packet);
                                         break;
+                                    case "retrieveInventory":
+                                        handleRetrieveInventory(packet);
+                                        break;
                                     case "mv":
                                         Room _room = roomManager.getInstance(roomManager.getClientRoomID(int.Parse(packet[4])));
                                         User _userInfo = Connection.Session.userInfo;
@@ -64,7 +67,7 @@ namespace AQWE.Net
                                         _userInfo.X = int.Parse(packet[5]);
                                         _userInfo.Y = int.Parse(packet[6]);
 
-                                        roomManager.sendToRoom(_room.ID, "%xt%uotls%-1%" + _userInfo.Username + "%sp:" + _userInfo.Speed + ",tx:" + _userInfo.X + ",ty:" + _userInfo.Y + ",strFrame:" + _userInfo.Frame + "%");
+                                        roomManager.sendToRoom(_room.ID, "%xt%uotls%-1%" + _userInfo.Username + "%,afk:false,sp:" + _userInfo.Speed + ",tx:" + _userInfo.X + ",ty:" + _userInfo.Y + ",strFrame:" + _userInfo.Frame + "%");
                                         break;
                                     case "afk":
                                         handleAFK(bool.Parse(packet[5]));
@@ -109,6 +112,18 @@ namespace AQWE.Net
                         break;
                 }
             }
+        }
+
+        public void handleRetrieveInventory(string[] Packet)
+        {
+            int _roomID = int.Parse(Packet[4]);
+            int _playerID = int.Parse(Packet[5]);
+
+            Connection.sendMessage("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"aura-\",\"auras\":[],\"tInf\":\"p:" + _playerID + "\"}}}");
+            Connection.sendMessage("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"sAct\",\"actions\":{\"passive\":[{\"icon\":\"iwd1\",\"ref\":\"p1\",\"nam\":\"Furious\",\"desc\":\"Increases all damage done by 10%\",\"auras\":[{\"nam\":\"Furious\",\"e\":[{\"val\":0.1,\"sta\":\"_ao\",\"typ\":\"mb\"}]}],\"typ\":\"pa\"},{\"icon\":\"iwd1\",\"ref\":\"p2\",\"nam\":\"Relentless\",\"desc\":\"(NYI) Chance to deal extra attack on normal swing.\",\"auras\":[{\"val\":0.05,\"nam\":\"Relentless\"}],\"typ\":\"pa\"}],\"active\":[{\"icon\":\"iwd1\",\"nam\":\"Auto attack\",\"anim\":\"Attack1,Attack2\",\"desc\":\"A strong attack known only to disciplined fighters.\",\"range\":301,\"fx\":\"m\",\"damage\":1.1,\"mana\":0,\"dsrc\":\"wDMG\",\"ref\":\"aa\",\"auto\":true,\"tgt\":\"h\",\"typ\":\"aa\",\"strl\":\"\",\"cd\":2000},{\"icon\":\"imr1,iwaxe\",\"nam\":\"Breaker\",\"anim\":\"Attack3\",\"desc\":\"Deals weapon DPS as damage and reduces opponents damage output by 50% for 2 actions\",\"auras\":[{\"nam\":\"Breaker\",\"t\":\"a\",\"e\":[{\"val\":0.5,\"sta\":\"_ao\",\"typ\":\"mr\"}],\"dur\":2,\"tgt\":\"h\"}],\"range\":301,\"fx\":\"m\",\"damage\":1,\"mana\":6,\"dsrc\":\"wDPS\",\"ref\":\"a1\",\"tgt\":\"h\",\"typ\":\"p\",\"strl\":\"\",\"cd\":8000},{\"icon\":\"ims2,iwsword\",\"nam\":\"Broadside\",\"anim\":\"Attack2\",\"desc\":\"(NYI) Deals 70% of weapon damage, cannot be avoided but also cannot crit.\",\"range\":301,\"fx\":\"m\",\"damage\":0.7,\"mana\":4,\"dsrc\":\"wDMG\",\"ref\":\"a2\",\"tgt\":\"h\",\"typ\":\"p\",\"cd\":4000},{\"icon\":\"iss1\",\"nam\":\"Lunge\",\"anim\":\"Stab\",\"desc\":\"Deals very light damage, and cancels opponent's next action\",\"auras\":[{\"cat\":\"disable\",\"nam\":\"Disabled\",\"t\":\"a\",\"dur\":1,\"s\":\"s\",\"tgt\":\"h\"}],\"range\":301,\"fx\":\"m\",\"damage\":0.1,\"mana\":8,\"dsrc\":\"wDMG\",\"ref\":\"a3\",\"tgt\":\"h\",\"typ\":\"p\",\"cd\":10000},{\"icon\":\"ied1\",\"nam\":\"Forgone Conclusion\",\"anim\":\"Point\",\"desc\":\"(NYI) Increases attack speed by 50% for 5 Attacks.  If opponent dies within 5 attacks, 2AP are gained for each attack that landed while under the effects of Forgone Conclusion.\",\"range\":301,\"auras\":[{\"val\":2,\"nam\":\"Forgone Conclusion\",\"t\":\"a\",\"e\":[{\"val\":0.5,\"sta\":\"_haste\",\"typ\":\"mb\"}],\"dur\":5,\"tgt\":\"s\"}],\"fx\":\"m\",\"mana\":10,\"ref\":\"a4\",\"tgt\":\"s\",\"typ\":\"p\",\"strl\":\"\",\"cd\":30000}]}}}}");
+            Connection.sendMessage("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"stu\",\"data\":{\"_lck\":4,\"_pi\":1,\"_di\":1,\"$haste\":0,\"_po\":1,\"_mri\":0.01,\"$hi\":1,\"$ho\":1,\"$ao\":1.1,\"_ho\":1,\"_mro\":0.01,\"$mra\":2,\"_do\":1,\"$hit\":0,\"_end\":19,\"_hi\":1,\"_mrr\":5,\"$po\":1,\"$cha\":6,\"$end\":19,\"$ai\":1,\"_mo\":1,\"_str\":17,\"_hit\":0,\"_dodge\":0.05,\"_haste\":0,\"_cha\":6,\"$crit\":0.25,\"_mi\":1,\"$dex\":14,\"_int\":3,\"$mo\":1,\"$dodge\":0.05,\"_dex\":14,\"$mi\":1,\"$pi\":1,\"$lck\":4,\"$str\":17,\"$mro\":0.01,\"$mri\":0.01,\"_ao\":1,\"_crit\":0.25,\"$int\":3,\"$do\":1,\"_ai\":1,\"$mrr\":5,\"$di\":1,\"_mra\":2}}}}");
+            Connection.sendMessage("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"loadInventoryBig\",\"friends\":[]}}}");
+            Connection.sendMessage("%xt%server%-1%Character load complete.%");
         }
 
         public void handleEmotea(string Emote)
@@ -156,7 +171,7 @@ namespace AQWE.Net
                         if (i != 5)
                             returnPacket += ",";
 
-                        userManager _user = (userManager)_room.getPlayerInstance(int.Parse(Packets[i]));
+                        userManager _user = (userManager)_room.getUserInstance(int.Parse(Packets[i]));
                         User _userInfo = (User)_user.Session.userInfo;
                         Hair _userHair = (Hair)hairManager.getInstance(_userInfo.HairID);
 
@@ -172,6 +187,7 @@ namespace AQWE.Net
                 Logging.logError(ex.Message);
             }
         }
+
         public void handleRetrieveUserData(string[] Packets)
         {
             try
@@ -179,7 +195,7 @@ namespace AQWE.Net
                 int roomID = int.Parse(Packets[4]);
                 Room _room = (Room)roomManager.getInstance(roomManager.getClientRoomID(roomID));
 
-                userManager _user = (userManager)_room.getPlayerInstance(int.Parse(Packets[5]));
+                userManager _user = (userManager)_room.getUserInstance(int.Parse(Packets[5]));
                 User _userInfo = (User)_user.Session.userInfo;
                 Hair _userHair = (Hair)hairManager.getInstance(_userInfo.HairID);
 

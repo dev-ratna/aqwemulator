@@ -45,3 +45,9 @@ Build 1.0.6:
 - Done with AFK.
 - Done with Emotes.
 - Done with Canned Chat.
+- Done with retrieveUserData.
+
+Build 1.0.7:
+- Done with actions.
+- Done with action manager.
+- Actions are now preloaded.

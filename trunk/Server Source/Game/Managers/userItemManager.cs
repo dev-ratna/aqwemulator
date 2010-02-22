@@ -58,7 +58,7 @@ namespace AQWE.Game.Managers
 
             foreach (KeyValuePair<int, Users.Item> KVP in Items)
             {
-                if (KVP.Value.Equipped)
+                if (KVP.Value.Equipped && KVP.Value.UserID == userID)
                 {
                     if (first)
                         returnPacket += ",";
