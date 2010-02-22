@@ -15,5 +15,3 @@ C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.fr
 C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.Properties.Resources.resources
 C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\Visual Studio 2008\Projects\AQWE\AQWE\obj\Debug\AQWE.frmSplash.resources
-C:\aqwemulator2\Server Source\obj\Debug\AQWE.exe
-C:\aqwemulator2\Server Source\obj\Debug\AQWE.pdb

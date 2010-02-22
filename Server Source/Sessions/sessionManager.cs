@@ -65,7 +65,13 @@ namespace AQWE.Sessions
 
                     userSession Session = new userSession(pH.Connection, userInfo);
                     pH.Connection.Session = Session;
-                    _Sessions.Add(userInfo.userID, Session);
+
+                    try { _Sessions.Add(userInfo.userID, Session); }
+                    catch 
+                    {
+                        _Sessions.Remove(userInfo.userID);
+                        _Sessions.Add(userInfo.userID, Session);
+                    }
 
                     pH.Connection.sendMessage("%xt%loginResponse%-1%true%" + userInfo.userID + "%" + userInfo.Username + "%" + Settings.server_motd + "%1262809466137%sNews=" + Settings.client_news + ",sMap=" + Settings.client_map + ",sBook=" + Settings.client_book + "%");
                 }

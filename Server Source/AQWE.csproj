@@ -66,7 +66,9 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Action.cs" />
     <Compile Include="Game\Hair.cs" />
+    <Compile Include="Game\Managers\actionManager.cs" />
     <Compile Include="Game\Managers\hairManager.cs" />
     <Compile Include="Game\Managers\ItemManager.cs" />
     <Compile Include="Game\Managers\mapManager.cs" />

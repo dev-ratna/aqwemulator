@@ -17,9 +17,17 @@ namespace AQWE.Data
         public static void Init()
         {
             Logging.logHolyInfo("Preloading game database...");
+
+            Logging.logHolyInfo("");
             loadMaps();
+            Logging.logHolyInfo("");
             loadHairs();
+            Logging.logHolyInfo("");
             loadItems();
+            Logging.logHolyInfo("");
+            loadActions();
+            Logging.logHolyInfo("");
+
             Logging.logHolyInfo("Game database preloaded.");
         }
 
@@ -91,6 +99,44 @@ namespace AQWE.Data
                     Logging.logHolyInfo("Preloaded '" + _item.Name + "'...");
                 }
                 Logging.logHolyInfo("Preloaded " + itemIDs.Length + " items.");
+            }
+            catch (Exception ex)
+            {
+                Logging.logError(ex.Message);
+            }
+        }
+
+        public static void loadActions()
+        {
+            Logging.logHolyInfo("Preloading actions...");
+
+            int[] actionIDs = Database.runReadColumnIntegers("SELECT id FROM actions WHERE 1=1", 0);
+
+            try
+            {
+                foreach (int tempID in actionIDs)
+                {
+                    Game.Action _action = new Game.Action(tempID);
+                    _action.Name        = Database.runRead("SELECT name FROM actions WHERE id = " + tempID);
+                    _action.Icon        = Database.runRead("SELECT icon FROM actions WHERE id = " + tempID);
+                    _action.Ref         = Database.runRead("SELECT ref FROM actions WHERE id = " + tempID);
+                    _action.Description = Database.runRead("SELECT description FROM actions WHERE id = " + tempID);
+                    _action.Animation   = Database.runRead("SELECT animation FROM actions WHERE id = " + tempID);
+                    _action.Range       = int.Parse(Database.runRead("SELECT ragne FROM actions WHERE id = " + tempID));
+                    _action.Fx          = Database.runRead("SELECT fx FROM actions WHERE id = " + tempID);
+                    _action.Damage      = double.Parse(Database.runRead("SELECT damage FROM actions WHERE id = " + tempID));
+                    _action.Mana        = int.Parse(Database.runRead("SELECT mana FROM actions WHERE id = " + tempID));
+                    _action.Dsrc        = Database.runRead("SELECT dsrc FROM actions WHERE id = " + tempID);
+                    _action.Auto        = bool.Parse(Database.runRead("SELECT auto FROM actions WHERE id = " + tempID));
+                    _action.Tgt         = Database.runRead("SELECT tgt FROM actions WHERE id = " + tempID);
+                    _action.Strl        = Database.runRead("SELECT strl FROM actions WHERE id = " + tempID);
+                    _action.Cd          = int.Parse(Database.runRead("SELECT cd FROM actions WHERE id = " + tempID));
+                    _action.Active      = bool.Parse(Database.runRead("SELECT active FROM actions WHERE id = " + tempID));
+
+                    Logging.logHolyInfo("Preloaded '" + _action.Name + "'...");
+                }
+
+                Logging.logHolyInfo("Preloaded " + actionIDs.Length + " actions.");
             }
             catch (Exception ex)
             {
